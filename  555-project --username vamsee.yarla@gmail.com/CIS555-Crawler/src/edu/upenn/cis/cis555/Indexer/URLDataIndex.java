@@ -9,11 +9,11 @@ public class URLDataIndex {
 		String urlid;
 		URLDataObject data = new URLDataObject();
 		
-		public void setKeyword(String keyword){
+		public void setURLId(String keyword){
 			this.urlid=keyword;
 		}
 		
-		public String getKeyword(){
+		public String getURLId(){
 			return urlid;
 		}
 		
