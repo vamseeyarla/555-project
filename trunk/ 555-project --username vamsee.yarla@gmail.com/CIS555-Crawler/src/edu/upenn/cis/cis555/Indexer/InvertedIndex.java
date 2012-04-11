@@ -8,24 +8,24 @@ public class InvertedIndex {
 		@PrimaryKey
 		String keyword;
 		
-		ArrayList<String> urls = new ArrayList<String>();
+		ArrayList<String> urlid = new ArrayList<String>();
 		
 		public void setKeyword(String keyword){
 			this.keyword=keyword;
 		}
 		
 		public void addurl(String url){
-			urls.add(url);
+			urlid.add(url);
 		}
 		
 		public void seturls(ArrayList<String> urls){
-			this.urls = urls;
+			this.urlid = urls;
 		}
 		public String getKeyword(){
 			return keyword;
 		}
 		
 		public ArrayList<String> getUrls(){
-			return urls;
+			return urlid;
 		}
 }

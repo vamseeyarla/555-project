@@ -6,14 +6,24 @@ import com.sleepycat.persist.model.PrimaryKey;
 @Entity
 public class URLDataIndex {
 		@PrimaryKey
-		String url;
+		String urlid;
 		URLDataObject data = new URLDataObject();
 		
 		public void setKeyword(String keyword){
-			this.url=keyword;
+			this.urlid=keyword;
 		}
 		
-	//	public String getKeyword()
+		public String getKeyword(){
+			return urlid;
+		}
+		
+		public void setData(URLDataObject data){
+			this.data=data;
+		}
+		
+		public URLDataObject getURLDataObject(){
+			return data;
+		}
 		
 		
 				
