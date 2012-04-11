@@ -29,7 +29,7 @@ public class DB {
     static DB db=null;
 	
     /*
-     * Contrcutor to take DB directory as input
+     * Constructor to take DB directory as input
      */
 	public DB(String Directory)
 	{
