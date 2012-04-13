@@ -58,7 +58,7 @@ public class Parser {
 
 			MozillaParser parser = new MozillaParser();
 
-			URLConnection conn = new URL("http://en.wikipedia.org/wiki/Everglades_National_Park")
+			URLConnection conn = new URL("http://www.cis.upenn.edu/")
 					.openConnection();
 			BufferedReader br = new BufferedReader(new InputStreamReader(
 					conn.getInputStream()));
@@ -142,6 +142,7 @@ public class Parser {
 				
 			}
 			*/
+			ArrayList<String> body = new ArrayList<String>();
 			String temp1="";
 			System.out.println("----------------Body-------------------"); 
 			XPath xpath = XPathFactory.newInstance().newXPath();
@@ -155,14 +156,14 @@ public class Parser {
 				// if (nodes1.item(j).getTextContent().startsWith("["))
 					// continue;
 				 System.out.println(nodes1.item(j).getTextContent());
-				//.add(nodes1.item(j).getTextContent());
+				body.add(nodes1.item(j).getTextContent());
 				
 				
 			 }
-			 /*
-			
+			 
+			 
 				System.out.println("----------------script-------------------");
-				nodes = document.getElementsByTagName("script");
+				NodeList nodes = document.getElementsByTagName("script");
 				for (int i = 0; i < nodes.getLength(); i++) {
 					System.out.println(nodes.item(i).getTextContent());
 					//ArrayList<String> script = new ArrayList<String>();
@@ -196,7 +197,7 @@ public class Parser {
 				for(String s:body){
 					System.out.println(s);
 				}
-*/
+
 		} catch (Exception e) {
 			e.printStackTrace();
 
