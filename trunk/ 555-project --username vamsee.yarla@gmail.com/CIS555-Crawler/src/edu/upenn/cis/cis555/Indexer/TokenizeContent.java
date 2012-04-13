@@ -27,39 +27,20 @@ import opennlp.tools.util.Span;
 
 public class TokenizeContent {
 
-	public static void main(String [] args)
+	public ArrayList<String> giveTokens(String content)
 	{
 		
-		
-		
-		
-		TokenizeContent obj=new TokenizeContent();
-		 try {
-	    URLConnection conn=new URL("http://wordpress.org/extend/plugins/about/readme.txt").openConnection();
-		BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
-		
-		StringBuffer totalFileBuf=new StringBuffer();
-		String temp;
-		while((temp=br.readLine())!=null)
-		{
-			totalFileBuf.append(temp+" ");
-		}
+	 try {
 		
 		HashMap<String,URLDataObject> words=new HashMap<String,URLDataObject>();
 		
-		String fileContents=totalFileBuf.toString();
+		String fileContents=content;
 		
 		TokenizerModel model = new TokenizerModel(new FileInputStream("en-token.bin"));
 		Tokenizer tokenizer = new TokenizerME(model);
 		
-		Span tags[] = tokenizer.tokenizePos(fileContents);
-		String tokens[] = tokenizer.tokenize(fileContents);
+	    String tokens[] = tokenizer.tokenize(fileContents);
 		
-		for(int i=0;i<tokens.length;i++)
-		{
-			//System.out.println(tokens[i]);
-		}
-		 
 		ArrayList<String> allWords=new ArrayList<String>();
 		ArrayList<String> finalAllWords=new ArrayList<String>();
 		
@@ -72,7 +53,7 @@ public class TokenizeContent {
 		for(int i=0;i<allWords.size();i++)
 		{
 			
-			ArrayList<String> furtherStringSplit=obj.removeBadCharacters(allWords.get(i));
+			ArrayList<String> furtherStringSplit=removeBadCharacters(allWords.get(i));
 		//	System.out.println(furtherStringSplit.size());
 			
 				if(furtherStringSplit.size()!=0)
@@ -107,7 +88,7 @@ public class TokenizeContent {
 				
 				
 			}
-		//	i=i+furtherStringSplit.size()-2;
+		
 				}
 				else
 				{
@@ -115,35 +96,16 @@ public class TokenizeContent {
 				}
 		}	
 		
-		
-		/*
-		for(int count=0;count<allWords.size();count++)
-		{
-				String tempString=allWords.get(count).trim();
-			if(!words.containsKey(tempString))
-				{
-				//Create new
-					URLDataObject data=new URLDataObject();
-					data.keyword=tempString;
-					
-				}
-			else
-			{
-				//Update it
-			}
-			
-			}
-			*/
-		System.out.println(finalAllWords);
-		 
-		 
+				 
+		return finalAllWords;
 		 
 		 } catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.toString());
+			return null;
 		}
 	
-	
+		 
 	}
 	
 	public ArrayList<String> removeBadCharacters(String input)
